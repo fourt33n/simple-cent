@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cancellation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Your Cancellation</div>
+
+    <div class="result-box" id="output">
+        {{ message }}
+    </div>
+
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+
+    <a href="/" class="back-link">Generate another</a>
+
+</div>
+
+<script>
+function copyText() {
+    const text = document.getElementById("output").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>

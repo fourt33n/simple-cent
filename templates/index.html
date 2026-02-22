@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimpleCancel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Title with tiny superscript checkmark -->
+    <div class="title">
+        SimpleCancel<span class="brand-mark">✓</span>
+    </div>
+
+    <!-- Language select BELOW the title now -->
+    <div class="language-select">
+        
+    </div>
+
+    <div class="form-card">
+
+        <label for="language">Choose language:</label>
+        <select id="language">
+            <option value="" disabled selected>Select language</option>
+            <option value="en">EN</option>
+            <option value="fi">FI</option>
+        </select>
+
+        <form action="/generate" method="POST">
+
+            <label for="recipient">Who is the cancellation for?</label>
+            <select id="recipient" name="recipient" required>
+                <option value="" disabled selected>Select recipient</option>
+                <option value="hair">Hairdresser / Barber</option>
+                <option value="beauty">Lash / Nail Technician</option>
+                <option value="massage">Massage / Physio</option>
+                <option value="therapy">Therapist</option>
+                <option value="doctor">Doctor / Clinic</option>
+                <option value="general">General Appointment</option>
+            </select>
+
+            <label for="tone" style="margin-top: 24px;">Tone style:</label>
+            <select id="tone" name="tone" required>
+                <option value="" disabled selected>Select tone</option>
+                <option value="simple">Simple & Direct</option>
+                <option value="polite">Polite & Warm</option>
+                <option value="formal">Formal</option>
+            </select>
+
+            <label for="details" style="margin-top: 24px;">Optional details (reason, date, etc):</label>
+            <textarea id="details" name="details" rows="4" placeholder="(optional)"></textarea>
+
+            <button type="submit">Generate Cancellation</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
