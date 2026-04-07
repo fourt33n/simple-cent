@@ -14,7 +14,7 @@
             SimpleAccess<span class="brand-mark">✔</span>
         </div>
 
-        <form method="POST">
+        <form method="POST" action="{{ request.path }}">
             <input type="password" name="key" placeholder="Access key" required>
             <button type="submit">Continue</button>
         </form>
