@@ -149,8 +149,8 @@ def home():
         key = request.form.get("key")
         if check_access(key, correct_password):
             return render_template("cancel.html")
-        return render_template("access.html", error=True)
-    return render_template("access.html")
+        return render_template("access.html", error=True, action="/")
+    return render_template("access.html", action="/")
 
 @app.route("/reschedule", methods=["GET", "POST"])
 def reschedule():
@@ -159,8 +159,8 @@ def reschedule():
         key = request.form.get("key")
         if check_access(key, correct_password):
             return render_template("reschedule.html")
-        return render_template("access.html", error=True)
-    return render_template("access.html")
+        return render_template("access.html", error=True, action="/reschedule")
+    return render_template("access.html", action="/reschedule")
 
 @app.route("/decline", methods=["GET", "POST"])
 def decline():
@@ -169,8 +169,8 @@ def decline():
         key = request.form.get("key")
         if check_access(key, correct_password):
             return render_template("decline.html")
-        return render_template("access.html", error=True)
-    return render_template("access.html")
+        return render_template("access.html", error=True, action="/decline")
+    return render_template("access.html", action="/decline")
 
 @app.route("/apology", methods=["GET", "POST"])
 def apology():
@@ -179,8 +179,8 @@ def apology():
         key = request.form.get("key")
         if check_access(key, correct_password):
             return render_template("apology.html")
-        return render_template("access.html", error=True)
-    return render_template("access.html")
+        return render_template("access.html", error=True, action="/apology")
+    return render_template("access.html", action="/apology")
 
 
 @app.route("/generate", methods=["POST"])
