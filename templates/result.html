@@ -10,7 +10,7 @@
 
 <div class="container">
 
-    <div class="title">Your Cancellation</div>
+    <div class="title">{{ title }}</div>
 
     <div class="result-box" id="output">
         {{ message }}
@@ -18,7 +18,7 @@
 
     <button class="copy-btn" onclick="copyText()">Copy</button>
 
-    <a href="/" class="back-link">Generate another</a>
+    <a href="{{ return_to }}" class="back-link">Generate another</a>
 
 </div>
 

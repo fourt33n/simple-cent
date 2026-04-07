@@ -10,26 +10,24 @@
 
 <div class="container">
 
-    <!-- Title with tiny superscript checkmark -->
+    <!-- Title and my tiny superscript checkmark :3 -->
     <div class="title">
         SimpleCancel<span class="brand-mark">✓</span>
     </div>
+    <div class="tagline">Looks simple. Is simple</div>
+    <div class="subtagline">Privacy-first. Zero tracking. Zero data stored.</div>
 
-    <!-- Language select BELOW the title now -->
-    <div class="language-select">
-        
-    </div>
 
     <div class="form-card">
 
-        <label for="language">Choose language:</label>
-        <select id="language">
-            <option value="" disabled selected>Select language</option>
-            <option value="en">EN</option>
-            <option value="fi">FI</option>
-        </select>
-
         <form action="/generate" method="POST">
+
+            <label for="language">Choose language:</label>
+            <select id="language" name="language" required>
+                <option value="" disabled selected>Select language</option>
+                <option value="en">EN</option>
+                <option value="fi">FI</option>
+            </select>
 
             <label for="recipient">Who is the cancellation for?</label>
             <select id="recipient" name="recipient" required>
@@ -52,9 +50,19 @@
 
             <label for="details" style="margin-top: 24px;">Optional details (reason, date, etc):</label>
             <textarea id="details" name="details" rows="4" placeholder="(optional)"></textarea>
+            <label for="recipient_name" style="margin-top: 24px;">Recipient's name (optional):</label>
+            <input type="text" id="recipient_name" name="recipient_name" placeholder="(optional)">
+            <label for="your_name" style="margin-top: 12px;">Your name (optional):</label>
+            <input type="text" id="your_name" name="your_name" placeholder="(optional)">
 
             <button type="submit">Generate Cancellation</button>
         </form>
+        <div class="other-tools">Need to reschedule instead? 
+                                <a href="/reschedule">Try SimpleReschedule!</a><br>
+                                Looking to decline? <a href="/decline">Try SimpleDecline!</a><br>
+                                Need to apologize maybe? <a href="/apology">Try SimpleApology!</a>
+
+        </div>
     </div>
 
 </div>

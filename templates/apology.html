@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimpleCancel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Title with tiny CUTE LIL checkmark -->
+    <div class="title">
+        SimpleApology<span class="brand-mark">✓</span>
+    </div>
+    <div class="tagline">Looks simple. Is simple</div>
+    <div class="subtagline">Privacy-first. Zero tracking. Zero data stored.</div>
+
+
+    <div class="form-card">
+
+        <form action="/apology_generate" method="POST">
+
+            <label for="language">Choose language:</label>
+            <select id="language" name="language" required>
+                <option value="" disabled selected>Select language</option>
+                <option value="en">EN</option>
+                <option value="fi">FI</option>
+            </select>
+
+            <label for="recipient">Who is the apology for?</label>
+            <select id="recipient" name="recipient" required>
+                <option value="" disabled selected>Select recipient</option>
+                <option value="partner">Partner</option>
+                <option value="coworker">Coworker</option>
+                <option value="boss">Boss</option>
+                <option value="associate">Business Associate</option>
+                <option value="client">Client</option>
+                <option value="general">General Apology</option>
+            </select>
+
+            <label for="tone" style="margin-top: 24px;">Tone style:</label>
+            <select id="tone" name="tone" required>
+                <option value="" disabled selected>Select tone</option>
+                <option value="soft">Soft & Warm</option>
+                <option value="neutral">Polite & Neutral</option>
+                <option value="formal">Formal & Professional</option>
+            </select>
+
+            <label for="details" style="margin-top: 24px;">Optional details (context, what happened, etc):</label>
+            <textarea id="details" name="details" rows="4" placeholder="(optional)"></textarea>
+
+            <button type="submit">Generate Apology</button>
+        </form>
+        <div class="other-tools">Need to reschedule instead? 
+                                <a href="/reschedule">Try SimpleReschedule!</a><br>
+                                Need to decline? <a href="/decline">Try SimpleDecline!</a><br>
+                                Looking to cancel? <a href="/">Try SimpleCancel!</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

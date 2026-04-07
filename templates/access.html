@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Required</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="form-card", style="text-align: center; font-weight: 300;">
+        <h2>Enter your access key</h2>
+
+        <div class="title">
+            SimpleAccess<span class="brand-mark">✔</span>
+        </div>
+
+        <form method="POST">
+            <input type="password" name="key" placeholder="Access key" required>
+            <button type="submit">Continue</button>
+        </form>
+
+        <p class="subtagline" style="margin-top: 16px;">
+            Purchased this tool? Use the access key provided at checkout. Thank you!
+        </p>
+    </div>
+</div>    
+</body>
+</html>

@@ -21,11 +21,49 @@ body {
 /* SIMPLECANCEL TITLE */
 .title {
     text-align: center;
-    font-size: 32px;
+    font-size: 36px;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     margin-bottom: 25px;
     color: #222;
-    letter-spacing: 0.7px;
+    letter-spacing: 0.9px;
+    line-height: 1.2;
+}
+
+.tagline {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #666;
+    margin-top: -4px;
+    letter-spacing: 0.5px;
+}
+
+.subtagline {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #999;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.other-tools {
+    margin-top: 22px;
+    font-size: 14px;
+    color: #666;
+}
+
+.other-tools a {
+    color: #2a7de1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.other-tools a:hover {
+    text-decoration: underline;
 }
 
 /* LANGUAGE SELECT */

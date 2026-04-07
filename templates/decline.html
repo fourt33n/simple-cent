@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimpleDecline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Title with tiny superscript checkmark -->
+    <div class="title">
+        SimpleDecline<span class="brand-mark">✓</span>
+    </div>
+    <div class="tagline">Looks simple. Is simple</div>
+    <div class="subtagline">Privacy-first. Zero tracking. Zero data stored.</div>
+
+
+    <div class="form-card">
+
+        <form action="/decline_generate" method="POST">
+
+            <label for="language">Choose language:</label>
+            <select id="language" name="language" required>
+                <option value="" disabled selected>Select language</option>
+                <option value="en">EN</option>
+                <option value="fi">FI</option>
+            </select>
+
+            <label for="recipient">What / Who is the decline for?</label>
+            <select id="recipient" name="recipient" required>
+                <option value="" disabled selected>Select option</option>
+                <option value="invitation">Invitation</option>
+                <option value="favor">Favor / Help Request</option>
+                <option value="date">Date / Meeting</option>
+                <option value="opportunity">Job / Opportunity</option>
+                <option value="general">General Decline</option>
+            </select>
+
+            <label for="tone" style="margin-top: 24px;">Tone style:</label>
+            <select id="tone" name="tone" required>
+                <option value="" disabled selected>Select tone</option>
+                <option value="soft">Soft & Kind</option>
+                <option value="neutral">Polite & Neutral</option>
+                <option value="firm">Firm but respectful</option>
+            </select>
+
+            <label for="details" style="margin-top: 24px;">Optional details (reason, context, etc):</label>
+            <textarea id="details" name="details" rows="4" placeholder="(optional)"></textarea>
+            
+            <button type="submit">Generate Decline</button>
+
+        </form>
+        <div class="other-tools">Need to cancel instead? 
+                         <a href="/"> Try SimpleCancel!</a><br>
+                         Looking to reschedule? <a href="/reschedule">Try SimpleReschedule!</a><br>
+                         Need to apologize? <a href="/apology">Try SimpleApology!</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
