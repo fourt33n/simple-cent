@@ -144,7 +144,6 @@ Lisätiedot, jos annettu:
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    print("HOME ROUTE HIT")
     correct_password = os.getenv("CANCEL_PASSWORD")
     if request.method == "POST":
         key = request.form.get("key")
@@ -175,10 +174,10 @@ def decline():
 
 @app.route("/apology", methods=["GET", "POST"])
 def apology():
-    print("APOLOGY HIT")
     correct_password = os.getenv("APOLOGY_PASSWORD")
     if request.method == "POST":
         key = request.form.get("key")
+        print ("KEY RECIEVED")
         if check_access(key, correct_password):
             return render_template("apology.html") 
         return render_template("access.html", error=True, action="/apology")
