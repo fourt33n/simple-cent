@@ -150,13 +150,13 @@ def home():
         key = (request.form.get("key") or "").strip()
 
         if key == os.getenv("CANCEL_PASSWORD"):
-            return redirect("/cancel")
+            return redirect("/cancel?ok=1")
         elif key == os.getenv("RESCHEDULE_PASSWORD"):
-            return redirect("/reschedule")
+            return redirect("/reschedule?ok=1")
         elif key == os.getenv("DECLINE_PASSWORD"):
-            return redirect("/decline")
+            return redirect("/decline?ok=1")
         elif key == os.getenv("APOLOGY_PASSWORD"):
-            return redirect("/apology")
+            return redirect("/apology?ok=1")
         return render_template("access.html")
     return render_template("access.html")
 
@@ -164,6 +164,8 @@ def home():
 @app.route("/cancel", methods=["GET", "POST"])
 def cancel():
     correct_password = os.getenv("CANCEL_PASSWORD")
+    if request.args.get("ok") == "1":
+        return render_template("cancel.html")
     if request.method == "POST":
         key = (request.form.get("key") or "").strip()
         if key == correct_password:
@@ -174,6 +176,8 @@ def cancel():
 @app.route("/reschedule", methods=["GET", "POST"])
 def reschedule():
     correct_password = os.getenv("RESCHEDULE_PASSWORD")
+    if request.args.get("ok") == "1":
+        return render_template("apology.html")
     if request.method == "POST":
         key = (request.form.get("key") or "").strip()
         if key == correct_password:
@@ -184,6 +188,8 @@ def reschedule():
 @app.route("/decline", methods=["GET", "POST"])
 def decline():
     correct_password = os.getenv("DECLINE_PASSWORD")
+    if request.args.get("ok") == "1":
+        return render_template("decline.html")
     if request.method == "POST":
         key = (request.form.get("key") or "").strip()
         if key == correct_password:
@@ -194,6 +200,8 @@ def decline():
 @app.route("/apology", methods=["GET", "POST"])
 def apology():
     correct_password = os.getenv("APOLOGY_PASSWORD")
+    if request.args.get("ok") == "1":
+        return render_template("apology.html")
     if request.method == "POST":
         key = (request.form.get("key") or "").strip()
         if key == correct_password:
