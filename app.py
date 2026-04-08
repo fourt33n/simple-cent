@@ -161,21 +161,45 @@ def home():
     return render_template("access.html")
 
        
-@app.route("/cancel")
+@app.route("/cancel", methods=["GET", "POST"])
 def cancel():
-    return render_template("cancel.html")
+    correct_password = os.getenv("CANCEL_PASSWORD")
+    if request.method == "POST":
+        key = (request.form.get("key") or "").strip()
+        if key == correct_password:
+            return render_template("cancel.html")
+        return render_template("access.html", error=True)
+    return render_template("access.html")
 
-@app.route("/reschedule")
+@app.route("/reschedule", methods=["GET", "POST"])
 def reschedule():
-    return render_template("reschedule.html")
+    correct_password = os.getenv("RESCHEDULE_PASSWORD")
+    if request.method == "POST":
+        key = (request.form.get("key") or "").strip()
+        if key == correct_password:
+            return render_template("reschedule.html")
+        return render_template("access.html", error=True)
+    return render_template("access.html")
 
-@app.route("/decline")
+@app.route("/decline", methods=["GET", "POST"])
 def decline():
-    return render_template("decline.html")
+    correct_password = os.getenv("DECLINE_PASSWORD")
+    if request.method == "POST":
+        key = (request.form.get("key") or "").strip()
+        if key == correct_password:
+            return render_template("decline.html")
+        return render_template("access.html", error=True)
+    return render_template("access.html")
 
-@app.route("/apology")
+@app.route("/apology", methods=["GET", "POST"])
 def apology():
-    return render_template("apology.html")
+    correct_password = os.getenv("APOLOGY_PASSWORD")
+    if request.method == "POST":
+        key = (request.form.get("key") or "").strip()
+        if key == correct_password:
+            return render_template("apology.html") 
+        return render_template("access.html", error=True)
+    return render_template("access.html")
 
 
 @app.route("/generate", methods=["POST"])
