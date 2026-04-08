@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
@@ -146,43 +146,36 @@ Lisätiedot, jos annettu:
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    correct_password = os.getenv("CANCEL_PASSWORD")
     if request.method == "POST":
         key = (request.form.get("key") or "").strip()
-        if check_access(key, correct_password):
-            return render_template("cancel.html")
-        return render_template("access.html", error=True, action="/")
-    return render_template("access.html", action="/")
 
-@app.route("/reschedule", methods=["GET", "POST"])
+        if key == os.getenv("CANCEL_PASSWORD"):
+            return redirect("/cancel")
+        elif key == os.getenv("RESCHEDULE_PASSWORD"):
+            return redirect("/reschedule")
+        elif key == os.getenv("DECLINE_PASSWORD"):
+            return redirect("/decline")
+        elif key == os.getenv("APOLOGY_PASSWORD"):
+            return redirect("/apology")
+        return render_template("access.html")
+    return render_template("access.html")
+
+       
+@app.route("/cancel")
+def cancel():
+    return render_template("cancel.html")
+
+@app.route("/reschedule")
 def reschedule():
-    correct_password = os.getenv("RESCHEDULE_PASSWORD")
-    if request.method == "POST":
-        key = (request.form.get("key") or "").strip()
-        if check_access(key, correct_password):
-            return render_template("reschedule.html")
-        return render_template("access.html", error=True, action="/reschedule")
-    return render_template("access.html", action="/reschedule")
+    return render_template("reschedule.html")
 
-@app.route("/decline", methods=["GET", "POST"])
+@app.route("/decline")
 def decline():
-    correct_password = os.getenv("DECLINE_PASSWORD")
-    if request.method == "POST":
-        key = (request.form.get("key") or "").strip()
-        if check_access(key, correct_password):
-            return render_template("decline.html")
-        return render_template("access.html", error=True, action="/decline")
-    return render_template("access.html", action="/decline")
+    return render_template("decline.html")
 
-@app.route("/apology", methods=["GET", "POST"])
+@app.route("/apology")
 def apology():
-    correct_password = os.getenv("APOLOGY_PASSWORD")
-    if request.method == "POST":
-        key = (request.form.get("key") or "").strip()
-        if check_access(key, correct_password):
-            return render_template("apology.html") 
-        return render_template("access.html", error=True, action="/apology")
-    return render_template("access.html", action="/apology")
+    return render_template("apology.html")
 
 
 @app.route("/generate", methods=["POST"])
