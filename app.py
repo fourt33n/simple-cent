@@ -79,7 +79,9 @@ TONE_APOLOGY_EN = {
 #_________________________________________________________
 
 def check_access(provided, correct):
-    return provided and provided.strip() == correct.strip()
+    if not provided or not correct:
+        return False
+    return provided == correct
 
 # ---------------------------------------------------------
 # GENERATION FUNCTION
@@ -146,7 +148,7 @@ Lisätiedot, jos annettu:
 def home():
     correct_password = os.getenv("CANCEL_PASSWORD")
     if request.method == "POST":
-        key = request.form.get("key")
+        key = (request.form.get("key") or "").strip()
         if check_access(key, correct_password):
             return render_template("cancel.html")
         return render_template("access.html", error=True, action="/")
@@ -156,7 +158,7 @@ def home():
 def reschedule():
     correct_password = os.getenv("RESCHEDULE_PASSWORD")
     if request.method == "POST":
-        key = request.form.get("key")
+        key = (request.form.get("key") or "").strip()
         if check_access(key, correct_password):
             return render_template("reschedule.html")
         return render_template("access.html", error=True, action="/reschedule")
@@ -166,7 +168,7 @@ def reschedule():
 def decline():
     correct_password = os.getenv("DECLINE_PASSWORD")
     if request.method == "POST":
-        key = request.form.get("key")
+        key = (request.form.get("key") or "").strip()
         if check_access(key, correct_password):
             return render_template("decline.html")
         return render_template("access.html", error=True, action="/decline")
@@ -176,8 +178,7 @@ def decline():
 def apology():
     correct_password = os.getenv("APOLOGY_PASSWORD")
     if request.method == "POST":
-        key = request.form.get("key")
-        print ("KEY RECIEVED")
+        key = (request.form.get("key") or "").strip()
         if check_access(key, correct_password):
             return render_template("apology.html") 
         return render_template("access.html", error=True, action="/apology")
