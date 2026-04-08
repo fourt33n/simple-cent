@@ -368,7 +368,7 @@ Palauta VAIN valmis viesti.
     
 
 #__________________________________________________________
-# APOLOGY
+# APOLOGY #
 #__________________________________________________________
 
 def apology_ending(tone): ## THIS IS THE ENG VERSION
