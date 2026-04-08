@@ -79,6 +79,8 @@ TONE_APOLOGY_EN = {
 #_________________________________________________________
 
 def check_access(provided, correct):
+    print("PROVIDED:", provided)
+    print("CORRECT:", correct)
     return provided and provided.strip() == correct.strip()
 
 # ---------------------------------------------------------
